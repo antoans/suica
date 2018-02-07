@@ -1,25 +1,22 @@
 $( window ).on( "load", function() {
-	var suica = new Suica("canv1");
+	var suica1 = new Suica("canv1");
 	
 	orthographic(1,2);
-	lookAt([0,0,1], [0,0,0], [0,1,0])
+	lookAt([0,0,1], [0,0,0], [0,1,0]);
+	suica1.gl.canvas.addEventListener('mousedown', onMouseDown);
+	suica1.gl.canvas.addEventListener('mouseup', onMouseUp);
+	suica1.gl.canvas.addEventListener('mousemove', onMouseMove);
 	
-	var a = point([-350,-50,0]);
-	var b = point([0,150,0]);
-	var c = point([-350,150,0]);
+	var a = point([-350,-87,0]).custom({color: [0,0.6,0], interactive: true, pointSize: 15});
+	var b = point([60,150,0]).custom({color: [0,0.6,0], interactive: true, pointSize: 15});
+	var c = point([-350,150,0]).custom({color: [0,0,0]});
 	
 	moveLetters();
 	calcAngles();
-
-	a.pointSize = 15;
-	b.pointSize = 15;
-	c.pointSize = 15;
-	a.interactive = true;
-	b.interactive = true;
 	
-	var segment_ab = segment(a.center, b.center);
-	segment(a.center, c.center);
-	segment(b.center, c.center);
+	segment(a.center, b.center).custom({color: [0.4,0.4,0.4]});
+	segment(a.center, c.center).custom({color: [0.4,0.4,0.4]});
+	segment(b.center, c.center).custom({color: [0.4,0.4,0.4]});
 	
 	var vec_ac = vectorPoints(a.center,c.center);
 	var vec_bc = vectorPoints(b.center,c.center);
@@ -27,9 +24,21 @@ $( window ).on( "load", function() {
 	var offset_ac = vec_ac[0] * vec_ac[0] + vec_ac[1] * vec_ac[1];
 	var offset_bc = vec_bc[0] * vec_bc[0] + vec_bc[1] * vec_bc[1];
 	
-	suica.gl.canvas.addEventListener('mousedown', onMouseDown);
-	suica.gl.canvas.addEventListener('mouseup', onMouseUp);
-	suica.gl.canvas.addEventListener('mousemove', onMouseMove);
+	
+	////////////////////////////////////////////// SECOND Suica
+	
+	
+	var suica2 = new Suica("canv2");
+	
+	orthographic(1,2);
+	lookAt([0,0,1], [0,0,0], [0,1,0])
+	suica2.gl.canvas.addEventListener('mousedown', onMouseDown);
+	suica2.gl.canvas.addEventListener('mouseup', onMouseUp);
+	suica2.gl.canvas.addEventListener('mousemove', onMouseMove);
+	
+	
+	
+	
 	
 	function onFrame() {
 		console.log(c);
@@ -38,7 +47,7 @@ $( window ).on( "load", function() {
 	var clickedPoint = null;
 	
 	function onMouseDown(e) {
-		clickedPoint = suica.objectAtPoint(e.clientX, e.clientY);
+		clickedPoint = suica1.objectAtPoint(e.clientX, e.clientY);
 	}
 	
 	function onMouseUp(e) {
@@ -78,7 +87,7 @@ $( window ).on( "load", function() {
 	
 	function moveLetters() {
 		var div = document.getElementById("A");
-		var pos = suica.getPosition(a.center);
+		var pos = suica1.getPosition(a.center);
 		div.style.left = pos[0] + "px";
 		div.style.top = (pos[1] + 5) + "px";
 		
@@ -87,7 +96,7 @@ $( window ).on( "load", function() {
 		div.style.top = (pos[1] - 30 ) + "px";
 		
 		div = document.getElementById("B");
-		pos = suica.getPosition(b.center);
+		pos = suica1.getPosition(b.center);
 		div.style.left = (pos[0] + 10) + "px";
 		div.style.top = pos[1] + "px";
 		
@@ -107,10 +116,10 @@ $( window ).on( "load", function() {
 		var sinA = (BC_length / AB_length);
 		var cosA = (AC_length / AB_length);
 		
-		document.getElementById("sinB").innerHTML = sinB.toFixed(4);
-		document.getElementById("cosB").innerHTML = cosB.toFixed(4);
-		document.getElementById("sinA").innerHTML = sinA.toFixed(4);
-		document.getElementById("cosA").innerHTML = cosA.toFixed(4);
+		document.getElementById("sinB").innerHTML = sinB.toFixed(3);
+		document.getElementById("cosB").innerHTML = cosB.toFixed(3);
+		document.getElementById("sinA").innerHTML = sinA.toFixed(3);
+		document.getElementById("cosA").innerHTML = cosA.toFixed(3);
 		
 		document.getElementById("degA").innerHTML = (Math.asin(sinA)*180/Math.PI).toFixed(1) + "°";
 		document.getElementById("degB").innerHTML = (Math.asin(sinB)*180/Math.PI).toFixed(1) + "°";
