@@ -10,29 +10,133 @@
 
 <body>
 
+	<div class="infoTxt">
+		<h2>Тригонометрични функции на остър ъгъл</h2>
+		Тригонометричните функции на остър ъгъл BAC (или просто A) могат да се определят чрез страните на правоъгълен триъгълник с остър ъгъл BAC.<br>
+		Нека ABC е правоъгълен триъгълник с прав ъгъл при върха C (фиг. 1).<br> Тогава:<br><br>
+		
+		<b>Синус</b> на ъгъл А наричаме отношението на срещулежащата му страна (BC) към хипотенузата (AB):<br>
+		sin(∠A) = BC / AB<br><br>
+		
+		<b>Косинус</b> на ъгъл А наричаме отношението на прилежащата му страна (AC) към хипотенузата (AB):<br>
+		cos(∠A) = AC / AB<br><br>
+		
+		<b>Тангенс</b> на ъгъл А наричаме отношението на срещулежащата му страна (BC) към прилежащата (AC):<br>
+		tg(∠A) = BC / AC = sin(∠A) / cos(∠A)<br><br>
+		
+		<b>Котангенс</b> на ъгъл А наричаме отношението на прилежащата му страна (AC) към срещулежащата (BC):<br>
+		cotg(∠A) = AC / BC = cos(∠A) / sin(∠A)<br>
+		<br>
+		
+	</div>
+	
+	<!-- Beginning of canvas1 -->
+	
+	<span>Кликнете и влачете зелените точки, за да видите как се изменят тригонометричните функции на ъглите в правоъгълния триъгълник.</span>
 	<canvas id="canv1" width="800" height="400" style="border:1px solid #000000;"></canvas>
+	<div style="margin-left: 375px;">(фиг. 1)</div><br>
 	
-	<div>Кликнете и влачете зелените точки, за да видите как се изменят тригонометричните функции на ъглите в правоъгълния триъгълник.</div><br>
-	
-	<div class="txt" style="left:550px; top:250px;">
+	<div class="dynamicTxt" style="left:700px; top:620px;">
 		<div>sin(∠B) = <span id="sinB"></span></div>
 		<div>cos(∠B) = <span id="cosB"></span></div>
+		<div>tg(∠B) = <span id="tgB"></span></div>
+		<div>cotg(∠B) = <span id="cotgB"></span></div>
 		<br>
 		<div>sin(∠A) = <span id="sinA"></span></div>
 		<div>cos(∠A) = <span id="cosA"></span></div>
+		<div>tg(∠A) = <span id="tgA"></span></div>
+		<div>cotg(∠A) = <span id="cotgA"></span></div>
 	</div>
 	
-	<div class="txt" id="A">A</div>
-	<div class="txt" id="B">B</div>
-	<div class="txt" style="left:60px; top:30px;">C</div>
+	<div class="dynamicTxt" id="A">A</div>
+	<div class="dynamicTxt" id="B">B</div>
+	<div class="dynamicTxt" id="C">C</div>
 	
-	<div class="txt" id="degA"></div>
-	<div class="txt" id="degB"></div>
-	<div class="txt" style="left:60px; top:60px;">90°</div>
+	<div class="dynamicTxt" id="degA"></div>
+	<div class="dynamicTxt" id="degB"></div>
+	<div class="dynamicTxt" id="degC">90°</div>
+		
+	<!-- End of canvas1 -->	
+	
+	<div class="infoTxt">
+		В таблицата са дадени стойностите на тригонометричните функции за някои остри ъгли:
+
+		<table>
+			<tr>
+				<th></th>
+				<th>sin(∠A)</th>
+				<th>cos(∠A)</th>
+				<th>tg(∠A)</th>
+				<th>cotg(∠A)</th>
+			</tr>
+			<tr>
+				<td>30°</td>
+				<td>1 / 2</td>
+				<td>√3 / 2</td>
+				<td>√3 / 3</td>
+				<td>√3</td>
+			</tr>
+			<tr>
+				<td>45°</td>
+				<td>√2 / 2</td>
+				<td>√2 / 2</td>
+				<td>1</td>
+				<td>1</td>
+			</tr>
+			<tr>
+				<td>60°</td>
+				<td>√3 / 2</td>
+				<td>1 / 2</td>
+				<td>√3</td>
+				<td>√3 / 3</td>
+			</tr>
+		</table>
+
+
+		От свойствата на правоъгълния триъгълник и определенията за тригонометрични функции, веднага се получават основните зависимости между тригонометричните функции на остър ъгъл.
+
+		За всеки ъгъл  е изпълнено:<br><br><br>
+
+		<ul style="font-size: 20px;">
+			<li>sin²(∠A) + cos²(∠A) = 1</li><br>
+			<li>sin(90° - ∠A) = cos(∠A)</li><br>
+			<li>tg(90° - ∠A) = cotg(∠A)</li><br>
+			<li>tg(A) * cotg(A) = 1</li><br>
+			<li>cos(90° - ∠A) = sin(∠A)</li><br>
+			<li>cotg(90° - ∠A) = tg(∠A)</li><br>
+		</ul>
+
+	</div>
+
 	
 	<!-- ------------------------------------------------------------------------------------------- -->
 	
-	<canvas id="canv2" width="800" height="400" style="border:1px solid #000000;"></canvas>
+	<div class="infoTxt">
+		<h2>Тригонометрична окръжност</h2>
+		Окръжност с център началото O на правоъгълна координатна система и радиус 1 се нарича единична тригонометрична окръжност.<br>
+		Нека т.А е с координати [1,0] и т.P е произволна точка от окръжността.<br>
+		Тогава, можем да измерим тригонометричните функции на ъгъл AOP по следния начин:<br><br>
+		sin(∠AOP) : разстоянието от центъра О до ортогоналната проекция на т.P върху оста <b>y</b>.<br>
+		cos(∠AOP) : разстоянието от центъра О до ортогоналната проекция на т.P върху оста <b>x</b>.
+		
+	
+	</div>	
+	
+	
+	<!-- Beginning of canvas2 -->
+	<span>Кликнете и влачете зелената точка, за да видите как се изменят тригонометричните функции на ∠AOP = ∠α:</span>
+	<canvas id="canv2" width="600" height="600" style="border:1px solid #000000;"></canvas>
+	
+	<div class="dynamicTxt" id="A_circle">A</div>
+	<div class="dynamicTxt" id="P_circle">P</div>
+	<div class="dynamicTxt" id="O_circle">O</div>
+	
+	<div class="dynamicTxt" id="sin_circle"></div>
+	<div class="dynamicTxt" id="cos_circle"></div>
+	<!-- End of canvas2 -->
+
+	
+	
 	
 	
 </body>

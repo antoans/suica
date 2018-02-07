@@ -1,6 +1,30 @@
-.txt {
+.dynamicTxt {
 	position: absolute;
 	font-size: 20px;
 	user-select: none;
 	pointer-events: none;
+}
+
+.infoTxt {
+	margin: 50px; 
+}
+
+body{
+	padding: 0px 100px;
+}
+
+table {
+    border-collapse: collapse;
+    width: 50%;
+	margin: 30px auto;
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: center;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
 }
